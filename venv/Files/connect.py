@@ -4,16 +4,6 @@
 import mysql.connector
 from mysql.connector import MySQLConnection, CMySQLConnection, errorcode
 
-
-#def con():
-    #mysql.connector.connect(user='root', password='',
-                            #host='127.0.0.1',
-                            #database='baufuchs')
-    #print("Connection established")
-
-
-#con()
-
 cnx = mysql.connector.connect(user='root', password='123',
  host='127.0.0.1',
  database='baufuchs')
