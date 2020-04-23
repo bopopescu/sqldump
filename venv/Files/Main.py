@@ -6,12 +6,8 @@ import mysql
 import subprocess
 
 
-# subprocess.run("mysqldump -u %s -p%s -h %s %s | gzip -c >> %s.gz" %
-#               ("root", "", "localhost",
-#                "baufuchs", "dump_baufuchs"))
-
-# subprocess.run("mysqldump -u root -p --all-databases > sicherung.sql")
-# subprocess.run("cd /var/lib/mysql", "ls")
-
-dumpdatabase = subprocess.run(["mysqldump", "--socket=/opt/lampp/var/mysql/mysql.sock", "-u root", "-p """, "--all-databases", ">", "sicherung.sql"])
+dumpdatabase = subprocess.run(["mysqldump", "--socket=/opt/lampp/var/mysql/mysql.sock", "-u", "root", "-p123", "baufuchs", "> sicherung.sql"])
 dumpdatabase
+
+#test = subprocess.run(["mysqldump", "-u", "root", "-p", "123", "--socket=/opt/lampp/var/mysql/mysql.sock", "baufuchs", ">", "sicherung.sql"])
+#test
