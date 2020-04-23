@@ -5,7 +5,6 @@ import connect
 import mysql
 import subprocess
 
-connect.con()
 
 # subprocess.run("mysqldump -u %s -p%s -h %s %s | gzip -c >> %s.gz" %
 #               ("root", "", "localhost",
@@ -14,5 +13,5 @@ connect.con()
 # subprocess.run("mysqldump -u root -p --all-databases > sicherung.sql")
 # subprocess.run("cd /var/lib/mysql", "ls")
 
-dumpdatabase = subprocess.run(["mysqldump", "-u root", "-p --all-databases", ">", "sicherung.sql"])
+dumpdatabase = subprocess.run(["mysqldump", "--socket=/opt/lampp/var/mysql/mysql.sock", "-u root", "-p """, "--all-databases", ">", "sicherung.sql"])
 dumpdatabase
