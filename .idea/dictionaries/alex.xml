@@ -2,6 +2,9 @@
   <dictionary name="alex">
     <words>
       <w>baufuchs</w>
+      <w>datensicherung</w>
+      <w>lampp</w>
+      <w>mysqldump</w>
     </words>
   </dictionary>
 </component>

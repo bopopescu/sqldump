@@ -14,8 +14,12 @@ def dump():
         shell=True)
 
 
+print('Dump Service running...')
+
 now = datetime.datetime.now()
 
 while True:
     if now.hour == "20" or now.hour == "12":
         dump()
+
+
