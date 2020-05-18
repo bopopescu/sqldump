@@ -5,11 +5,13 @@ from connect import *
 import mysql
 import subprocess
 import datetime
-# import time
+import time
 # import gzip
 # import shutil
 from Compress import compressdump
 import argparse
+import threading
+import process
 
 
 def main():
@@ -64,21 +66,37 @@ args = parser.parse_args()
 main()
 print("Enter command:")
 
-# Implementing arguments
-if __name__ == "__main__":
-    while True:
-        command = input()
-        if args.start or command == "start":
-            print("Program has started... automatic dumps are created at 12:00 and 20:00.")
-            subprocess.Popen('python ~/PycharmProjects/Datensicherung/venv/Files/autodump.py', shell=True)
-            while True:
-                command = input()
-                if args.stop or command == "stop":
-                    print("Program has stopped...")
-                    break
-                elif args.dump or command == "dump":
-                    InstantDump = Dump("baufuchs_db_", current_time(), True)
-                    savedump(InstantDump)
-                    print(InstantDump.timestamp)
-                    compressdump()
-                    continue
+
+def dumploop():
+    command = input()
+    if args.stop or command == "stop":
+        print("Program has stopped...")
+    elif args.dump or command == "dump":
+        InstantDump = Dump("baufuchs_db_", current_time(), True)
+        savedump(InstantDump)
+        print(InstantDump.timestamp)
+        compressdump()
+
+
+def autodump():
+    command = input()
+    if args.start or command == "start":
+        print("Program has started... automatic dumps are created at 12:00 and 20:00.")
+        while True:
+            current_time()
+            print(current_time())
+            if datetime.datetime.now().strftime("%H_%M_%S") == '13_23_00':
+                savedump(NoonDump)
+                compressdump()
+                time.sleep(10)
+                continue
+            elif datetime.datetime.now().hour == "20" and datetime.datetime.now().minute == "00" \
+                    and datetime.datetime.now().second == "00":
+                savedump(EveDump)
+                compressdump()
+                time.sleep(10)
+                continue
+            time.sleep(1)
+
+
+dumploop()

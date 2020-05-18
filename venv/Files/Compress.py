@@ -3,15 +3,14 @@ import shutil
 import glob
 import os
 
-#files = glob.glob("/home/alex/PycharmProjects/Datensicherung/Dumps/*.sql")
-#latestfile = max(files, key=os.path.getctime)
+
+# files = glob.glob("/home/alex/PycharmProjects/Datensicherung/Dumps/*.sql")
+# latestfile = max(files, key=os.path.getctime)
 
 def lastdump():
     files = glob.glob("/home/alex/PycharmProjects/Datensicherung/Dumps/*.sql")
     latestfile = max(files, key=os.path.getctime)
     return latestfile
-
-
 
 
 def compressdump():
@@ -20,9 +19,3 @@ def compressdump():
             shutil.copyfileobj(f_in, f_out)
         os.remove("%s" % lastdump())
     print("Dump compressed!")
-
-
-
-
-
-
