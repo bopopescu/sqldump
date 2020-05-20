@@ -10,6 +10,10 @@ import time
 #import shutil
 from Compress import compressdump
 import argparse
+import logging
+
+
+logging.basicConfig(filename='app.log', format='%(asctime)s - %(levelname)s - %(message)s',level=logging.NOTSET)
 
 
 def current_time():
@@ -48,13 +52,15 @@ if __name__ == "__main__":
         while True:
             time.sleep(1)
             if datetime.datetime.now().strftime("%H_%M_%S") == '19_40_00':
-                print(current_time())
                 savedump(NoonDump)
                 compressdump()
+                print(current_time(), "Noondump was saved...")
+                logging.info(current_time(), "Noondump was saved...")
                 continue
             elif datetime.datetime.now().strftime("%H_%M_%S") == '20_00_00':
-                print(current_time())
                 savedump(EveDump)
                 compressdump()
+                print(current_time(), "Evedump was saved...")
+                logging.info(current_time(), "Evedump was saved...")
                 continue
 

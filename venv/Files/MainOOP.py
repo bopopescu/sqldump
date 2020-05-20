@@ -5,11 +5,12 @@ from connect import *
 import mysql
 import subprocess
 import datetime
-# import time
+import time
 # import gzip
 # import shutil
 from Compress import compressdump
 import argparse
+import logging
 
 
 def main():
@@ -20,6 +21,15 @@ def main():
     print("For a list of commands, run this file with the parameter -h")
     print()
     print()
+
+
+# By default the root logger is set to WARNING and all loggers you define
+# inherit that value. Here we set the root logger to NOTSET. This logging
+# level is automatically inherited by all existing and new sub-loggers
+# that do not set a less verbose level.
+#logging.root.setLevel(logging.NOTSET)
+
+logging.basicConfig(filename='app.log', format='%(asctime)s - %(levelname)s - %(message)s', level=logging.NOTSET)
 
 
 def current_time():
@@ -70,15 +80,19 @@ if __name__ == "__main__":
         command = input()
         if args.start or command == "start":
             print("Program has started... automatic dumps are created at 12:00 and 20:00.")
+            logging.info("Program has started... automatic dumps are created at 12:00 and 20:00.")
             subprocess.Popen('python ~/PycharmProjects/Datensicherung/venv/Files/autodump.py', shell=True)
+            subprocess.Popen('python ~/PycharmProjects/Datensicherung/venv/Files/file-control.py', shell=True)
             while True:
                 command = input()
                 if args.stop or command == "stop":
                     print("Program has stopped...")
+                    logging.info("Program has stopped...")
                     break
                 elif args.dump or command == "dump":
                     InstantDump = Dump("baufuchs_db_", current_time(), True)
                     savedump(InstantDump)
-                    print(InstantDump.timestamp)
                     compressdump()
+                    print(InstantDump.timestamp, "InstantDump was saved...")
+                    logging.info("InstantDump was saved...")
                     continue
