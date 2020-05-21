@@ -59,4 +59,4 @@ if __name__ == "__main__":
     while True:
         delete()
         archiv()
-        time.sleep(10)
+        time.sleep(360)

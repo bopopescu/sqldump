@@ -23,12 +23,6 @@ def main():
     print()
 
 
-# By default the root logger is set to WARNING and all loggers you define
-# inherit that value. Here we set the root logger to NOTSET. This logging
-# level is automatically inherited by all existing and new sub-loggers
-# that do not set a less verbose level.
-#logging.root.setLevel(logging.NOTSET)
-
 logging.basicConfig(filename='app.log', format='%(asctime)s - %(levelname)s - %(message)s', level=logging.NOTSET)
 
 
@@ -82,7 +76,7 @@ if __name__ == "__main__":
             print("Program has started... automatic dumps are created at 12:00 and 20:00.")
             logging.info("Program has started... automatic dumps are created at 12:00 and 20:00.")
             subprocess.Popen('python ~/PycharmProjects/Datensicherung/venv/Files/autodump.py', shell=True)
-            subprocess.Popen('python ~/PycharmProjects/Datensicherung/venv/Files/file-control.py', shell=True)
+            #subprocess.Popen('python ~/PycharmProjects/Datensicherung/venv/Files/file-control.py', shell=True)
             while True:
                 command = input()
                 if args.stop or command == "stop":

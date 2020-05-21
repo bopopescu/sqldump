@@ -8,6 +8,23 @@ import os
 
 # files = glob.glob("/home/alex/PycharmProjects/Datensicherung/Dumps/*.sql")
 # latestfile = max(files, key=os.path.getctime)
+def lastnoondump():
+    files = glob.glob("/home/alex/PycharmProjects/Datensicherung/Dumps/*12_00_00.sql.gz")
+    latestnoonfile = max(files, key=os.path.getctime)
+    return latestnoonfile
+
+
+def lastevedump():
+    files = glob.glob("/home/alex/PycharmProjects/Datensicherung/Dumps/*20_00_00.sql.gz")
+    latestevefile = max(files, key=os.path.getctime)
+    return latestevefile
+
+
+def lastcompdump():
+    files = glob.glob("/home/alex/PycharmProjects/Datensicherung/Dumps/*.sql.gz")
+    latestcompfile = max(files, key=os.path.getctime)
+    return latestcompfile
+
 
 def lastdump():
     files = glob.glob("/home/alex/PycharmProjects/Datensicherung/Dumps/*.sql")

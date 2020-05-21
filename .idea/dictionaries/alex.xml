@@ -7,9 +7,14 @@
       <w>datensicherung</w>
       <w>dumploop</w>
       <w>dumppath</w>
+      <w>ergebnis</w>
+      <w>evedumptest</w>
       <w>fourweeks</w>
+      <w>instdumptest</w>
       <w>lampp</w>
       <w>mysqldump</w>
+      <w>noondumptest</w>
+      <w>testeinheiten</w>
       <w>twoweeks</w>
     </words>
   </dictionary>
