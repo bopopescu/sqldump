@@ -11,6 +11,7 @@ import time
 from Compress import compressdump
 import argparse
 import logging
+from test_sample import testinst
 
 
 def main():
@@ -87,6 +88,5 @@ if __name__ == "__main__":
                     InstantDump = Dump("baufuchs_db_", current_time(), True)
                     savedump(InstantDump)
                     compressdump()
-                    print(InstantDump.timestamp, "InstantDump was saved...")
-                    logging.info("InstantDump was saved...")
+                    testinst()
                     continue

@@ -9,9 +9,7 @@ import arrow
 import logging
 import time
 
-
 logging.basicConfig(filename='app.log', format='%(asctime)s - %(levelname)s - %(message)s', level=logging.NOTSET)
-
 
 dumppath = "/home/alex/PycharmProjects/Datensicherung/Dumps/"
 archivpath = "/home/alex/PycharmProjects/Datensicherung/Archiv/"
@@ -54,9 +52,8 @@ def delete():
 
 main()
 
-
 if __name__ == "__main__":
     while True:
         delete()
         archiv()
-        time.sleep(360)
+        time.sleep(60)  #21600

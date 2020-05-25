@@ -11,6 +11,7 @@ import time
 from Compress import compressdump
 import argparse
 import logging
+from test_sample import testnoon, testeve
 
 
 logging.basicConfig(filename='app.log', format='%(asctime)s - %(levelname)s - %(message)s',level=logging.NOTSET)
@@ -51,16 +52,18 @@ if __name__ == "__main__":
     while True:
         while True:
             time.sleep(1)
-            if datetime.datetime.now().strftime("%H_%M_%S") == '19_40_00':
+            if datetime.datetime.now().strftime("%H_%M_%S") == '11_20_00':
                 savedump(NoonDump)
                 compressdump()
-                print(current_time(), "Noondump was saved...")
-                logging.info(current_time(), "Noondump was saved...")
+                #print(current_time(), "Noondump was saved...")
+                #logging.info("Noondump was saved...")
+                testnoon()
                 continue
             elif datetime.datetime.now().strftime("%H_%M_%S") == '20_00_00':
                 savedump(EveDump)
                 compressdump()
-                print(current_time(), "Evedump was saved...")
-                logging.info(current_time(), "Evedump was saved...")
+                #print(current_time(), "Evedump was saved...")
+                #logging.info("Evedump was saved...")
+                testeve()
                 continue
 
