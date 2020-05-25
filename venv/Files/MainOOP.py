@@ -77,7 +77,7 @@ if __name__ == "__main__":
             print("Program has started... automatic dumps are created at 12:00 and 20:00.")
             logging.info("Program has started... automatic dumps are created at 12:00 and 20:00.")
             subprocess.Popen('python ~/PycharmProjects/Datensicherung/venv/Files/autodump.py', shell=True)
-            #subprocess.Popen('python ~/PycharmProjects/Datensicherung/venv/Files/file-control.py', shell=True)
+            subprocess.Popen('python ~/PycharmProjects/Datensicherung/venv/Files/file-control.py', shell=True)
             while True:
                 command = input()
                 if args.stop or command == "stop":
